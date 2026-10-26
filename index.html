@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Babbb 💗</title>
+<style>
+  :root { --pink:#ff7eb6; --rose:#ff4f87; --cream:#fff8fb; --purple:#b8a0ff; --ink:#63384f; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    font-family:"Trebuchet MS", "Segoe UI", sans-serif;
+    background:linear-gradient(135deg,#fff0f6 0%,#ffe4ef 40%,#f1eaff 100%);
+  }
+  button { font:inherit; cursor:pointer; border:0; }
+  .floaties { position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .floaty { position:absolute; bottom:-60px; opacity:.7; animation:floatUp linear infinite; }
+  @keyframes floatUp { to { transform:translateY(-115vh) rotate(25deg); opacity:0; } }
+  .wrap { position:relative; z-index:1; width:min(920px,92%); margin:auto; padding:30px 0 55px; }
+  .topline { text-align:center; font-size:.9rem; letter-spacing:2px; color:#c35b88; text-transform:uppercase; }
+  .hero { text-align:center; padding:28px 18px 34px; }
+  .tag { display:inline-block; padding:8px 15px; background:#fff9fc; border:1px solid #ffd1e2; border-radius:999px; box-shadow:0 6px 20px #d95d8b16; }
+  h1 { font-family:Georgia,serif; font-size:clamp(2.6rem,8vw,5.5rem); line-height:1.02; margin:22px 0 14px; color:#e84f89; text-shadow:3px 4px 0 #fff; }
+  .subtitle { max-width:580px; margin:0 auto 24px; font-size:1.12rem; line-height:1.7; }
+  .btn { padding:13px 21px; border-radius:999px; color:white; background:linear-gradient(100deg,#ff78ad,#f24f91); box-shadow:0 8px 18px #f24f9133; transition:transform .2s,box-shadow .2s; }
+  .btn:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 12px 24px #f24f9144; }
+  .btn.secondary { color:#a84776; background:#fff; border:1px solid #ffd0e1; box-shadow:none; }
+  .card { background:#ffffffc9; border:1px solid #fff; border-radius:28px; padding:clamp(20px,5vw,36px); margin:18px 0; box-shadow:0 15px 45px #9d477a12; backdrop-filter:blur(8px); }
+  h2 { margin:0 0 12px; color:#d94d86; font-family:Georgia,serif; font-size:clamp(1.7rem,5vw,2.4rem); }
+  .center { text-align:center; }
+  .cake { font-size:5.2rem; display:inline-block; filter:drop-shadow(0 7px 4px #e7a1b655); animation:bob 2.5s ease-in-out infinite; }
+  @keyframes bob { 50% { transform:translateY(-8px) rotate(2deg); } }
+  .candle-note { font-size:.9rem; opacity:.8; }
+  .wish { display:none; margin:20px auto 0; max-width:600px; line-height:1.8; animation:appear .6s ease; }
+  .wish.show { display:block; }
+  @keyframes appear { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+  .reasons { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:13px; margin-top:20px; }
+  .reason { background:#fff7fb; border:1px solid #ffe0ec; border-radius:20px; padding:19px 16px; text-align:center; transition:transform .2s; }
+  .reason:hover { transform:translateY(-5px) rotate(-1deg); }
+  .reason .emoji { font-size:2rem; display:block; margin-bottom:8px; }
+  .reason strong { display:block; color:#c7477b; margin-bottom:6px; }
+  .reason p { margin:0; line-height:1.55; font-size:.96rem; }
+  .letter { line-height:1.9; font-size:1.04rem; white-space:pre-line; }
+  .secret { display:none; padding:18px; margin-top:15px; background:#fff3f8; border-radius:18px; line-height:1.8; }
+  .secret.show { display:block; animation:appear .5s ease; }
+  .gift-area { text-align:center; }
+  .gift { font-size:5rem; display:inline-block; padding:6px 20px; background:transparent; animation:bob 2s infinite; }
+  .gift-message { display:none; margin-top:14px; line-height:1.8; }
+  .gift-message.show { display:block; animation:appear .5s ease; }
+  .footer { text-align:center; padding:26px 10px 5px; color:#a45a7d; }
+  .heart { display:inline-block; color:#f04f8c; animation:heartbeat 1.2s infinite; }
+  @keyframes heartbeat { 50% { transform:scale(1.25); } }
+  .confetti { position:fixed; top:-20px; z-index:5; pointer-events:none; animation:fall 3.5s linear forwards; }
+  @keyframes fall { to { transform:translateY(110vh) rotate(720deg); opacity:.1; } }
+  .music-note { font-size:.85rem; opacity:.75; margin-top:12px; }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+<div class="floaties" id="floaties" aria-hidden="true"></div>
+<audio id="birthdayAudio" src="borthday.mp3" preload="auto"></audio>
+<main class="wrap">
+  <div class="topline">MY BABY! ♡</div>
+  <section class="hero">
+    <span class="tag">💌 Open this little surprise</span>
+    <h1>Happy Birthday,<br>Babbb! 🎂</h1>
+    <p class="subtitle">Today is all about the sweetest person in my world. I made you a little something, just to remind you how special you are to me. 🌷</p>
+    <button class="btn" id="startBtn">Open your surprise ✨</button>
+    <p class="music-note">Best opened with your sound on, but this page is sweet even in silence. 💗</p>
+  </section>
+
+  <section class="card center" id="cakeCard">
+    <div class="cake" aria-label="birthday cake">🎂</div>
+    <h2>Make a birthday wish!</h2>
+    <p>Close your eyes for a second, think of something wonderful. 💫</p>
+    <button class="btn" id="wishBtn">I made a wish! 🕯️</button>
+    <p class="candle-note">The candles are imaginary, but my love is very real.</p>
+    <div class="wish" id="wishText">
+      🌟 I hope this year brings you peaceful days, loud laughter, beautiful surprises, and dreams that come true. And if I get one wish too, it’s to keep making you smile. <span class="heart">♥</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="center">A few reasons you're my favorite 💕</h2>
+    <p class="center">Tap, read, and remember that you're loved more than these little words can say.</p>
+    <div class="reasons">
+      <div class="reason"><span class="emoji">😊</span><strong>Your smile</strong><p>It can turn an ordinary day into my favorite memory.</p></div>
+      <div class="reason"><span class="emoji">🧸</span><strong>Your heart</strong><p>You make kindness feel easy and being loved feel safe.</p></div>
+      <div class="reason"><span class="emoji">🌈</span><strong>Your little ways</strong><p>Even the smallest things you do make me adore you more.</p></div>
+      <div class="reason"><span class="emoji">💗</span><strong>Just being you</strong><p>You don't have to be perfect. You are already precious to me.</p></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>My little letter to you 💌</h2>
+    <div class="letter">Happy birthday, Bab! 🥹💗
+
+I hope you know how grateful I am to have you in my life. You bring warmth to my days, comfort to my heart, and happiness in ways you might not even notice. Thank you for being you, for sharing your time with me, and for giving me so many reasons to smile.
+
+On your special day, I hope you feel appreciated, cared for, and surrounded by all the love you deserve. Keep chasing your dreams, keep being your lovely self, and remember that you never have to face every hard day alone.
+
+No matter how many birthdays come and go, I will always be cheering for you. I hope I can keep making memories with you, laughing with you, and reminding you that you mean so much to me.
+
+I love you, today and every day after. Happy birthday, sweetheart! 🎂🌷💞</div>
+    <div class="center" style="margin-top:20px">
+      <button class="btn secondary" id="secretBtn">Psst... one more thing 🤫</button>
+      <div class="secret" id="secretText">If I could wrap up all my hugs, kisses, and love into one gift, I'd give you the biggest box in the world. Until then, please accept this tiny corner of the internet as a reminder: <strong>you are my favorite person.</strong> 🫶💝</div>
+    </div>
+  </section>
+
+  <section class="card gift-area">
+    <h2>Your virtual present 🎁</h2>
+    <p>It's small, it's cute, and it comes with unlimited hugs.</p>
+    <button class="gift" id="giftBtn" aria-label="Open virtual present">🎁</button>
+    <div class="gift-message" id="giftMessage">
+      <div style="font-size:2.5rem">💐 🧸 💖 🍓</div>
+      <h2>Surprise!</h2>
+      <p>Your gift includes one thousand kisses, a million hugs, and a promise to keep finding little ways to make you happy. Redeem anytime. No expiration date. 😚</p>
+    </div>
+  </section>
+
+  <section class="center" style="padding:20px 0">
+    <h2>One last thing...</h2>
+    <p>May your year be as lovely as your heart. I hope today gives you a hundred reasons to smile. 🌸</p>
+    <br>
+    <br>
+    <button class="btn" id="celebrateBtn">Send the birthday magic! 🎉</button>
+  </section>
+  <footer class="footer">Made with <span class="heart">♥</span> just for you · Forever your biggest fan 💗</footer>
+</main>
+<script>
+  const floaties = document.getElementById('floaties');
+  const decorations = ['💗','💕','♡','✨','🌸','🫧'];
+  for (let i = 0; i < 22; i++) {
+    const item = document.createElement('span');
+    item.className = 'floaty';
+    item.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+    item.style.left = Math.random() * 100 + '%';
+    item.style.fontSize = (15 + Math.random() * 22) + 'px';
+    item.style.animationDuration = (9 + Math.random() * 13) + 's';
+    item.style.animationDelay = (-Math.random() * 18) + 's';
+    floaties.appendChild(item);
+  }
+  function confettiBurst(count = 90) {
+    const bits = ['💗','💖','💕','✨','🌸','🎉','💝'];
+    for (let i = 0; i < count; i++) {
+      const bit = document.createElement('span');
+      bit.className = 'confetti';
+      bit.textContent = bits[Math.floor(Math.random() * bits.length)];
+      bit.style.left = Math.random() * 100 + 'vw';
+      bit.style.fontSize = (14 + Math.random() * 22) + 'px';
+      bit.style.animationDuration = (2.3 + Math.random() * 2.2) + 's';
+      bit.style.animationDelay = (Math.random() * .7) + 's';
+      document.body.appendChild(bit);
+      setTimeout(() => bit.remove(), 5500);
+    }
+  }
+  document.getElementById('startBtn').addEventListener('click', () => {
+    const birthdayAudio = document.getElementById('birthdayAudio');
+    birthdayAudio.play().catch(error => console.error('Could not play birthday audio:', error));
+    document.getElementById('cakeCard').scrollIntoView({behavior:'smooth', block:'center'});
+    confettiBurst(45);
+  });
+  document.getElementById('wishBtn').addEventListener('click', () => {
+    document.getElementById('wishText').classList.add('show');
+    document.getElementById('wishBtn').textContent = 'Wish sent to the universe! 💫';
+    confettiBurst(65);
+  });
+  document.getElementById('secretBtn').addEventListener('click', () => {
+    const secret = document.getElementById('secretText');
+    secret.classList.toggle('show');
+    document.getElementById('secretBtn').textContent = secret.classList.contains('show') ? 'Awww, hide my secret 🙈' : 'Psst... one more thing 🤫';
+  });
+  document.getElementById('giftBtn').addEventListener('click', () => {
+    document.getElementById('giftMessage').classList.add('show');
+    document.getElementById('giftBtn').textContent = '🌷';
+    confettiBurst(55);
+  });
+  document.getElementById('celebrateBtn').addEventListener('click', () => {
+    confettiBurst(150);
+    document.getElementById('celebrateBtn').textContent = 'You deserve all the magic! 💖';
+  });
+</script>
+</body>
+</html>
